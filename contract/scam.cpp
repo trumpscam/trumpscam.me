@@ -19,7 +19,8 @@
 
 // #define DEBUG 1
 // What's this table used for? God knows!
-uint64_t pricetable[9][3] = {{100000 * 16, 100, 3000},
+uint64_t pricetable[10][3] = {{100000 * 2, 100, 20000},
+                                {100000 * 16, 100, 3000},
                                 {100000 * 48, 162, 1854},
                                 {100000 * 96, 262, 1146},
                                 {100000 * 192, 424, 708},
@@ -30,23 +31,23 @@ uint64_t pricetable[9][3] = {{100000 * 16, 100, 3000},
                                 {9223372036854775807, 4697, 64}};
 
 uint64_t get_pricetable_index(uint64_t sold_keys) {
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 9; i++) {
         if (sold_keys < pricetable[i][0]) {
             return i;
         }
     }
-    return 8;
+    return 9;
 }
 
 // Ditch this dumb method
 /*
 uint64_t get_level_keys(uint64_t sold_keys) {
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 9; i++) {
         if (sold_keys < pricetable[i][0]) {
             return pricetable[i][0] / 2;
         }
     }
-    return pricetable[7][0] / 2;
+    return pricetable[9][0] / 2;
 }
 */
 
